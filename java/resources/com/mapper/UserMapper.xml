@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--扫描接口实现的方法 -->
+<mapper namespace="com.dao.UserInfo">
+    <select id="selectAll" resultType="com.entity.User">
+        SELECT id,userName,password  FROM user
+    </select>
+    <select id="findById" resultType="com.entity.User">
+        SELECT id,userName,password FROM user WHERE
+        <if test="#{user.userName!=null}">
+            userName=#{user.userName}
+        </if>
+        <if test="#{user.password!=null}">
+            AND password=#{user.password}
+        </if>
+    </select>
+</mapper>
