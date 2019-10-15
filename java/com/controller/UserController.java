@@ -34,4 +34,15 @@ public class UserController {
             return "false";
         }
     }
+
+    @ResponseBody
+    @RequestMapping(value = "deleteUser")
+    public String deleteUser(Integer id){
+        System.out.println("id:"+id);
+        if(userService.deleteUser(id)){
+            return "true";
+        }else{
+            return "false";
+        }
+    }
 }

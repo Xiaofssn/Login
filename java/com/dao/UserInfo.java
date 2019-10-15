@@ -9,4 +9,5 @@ public interface UserInfo {
 
     List<User> selectAll();
     User findById(@Param("user")User user);
+    int deleteUser(@Param("id")Integer id);
 }
