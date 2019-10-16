@@ -13,7 +13,7 @@
 
         //登录验证
         $("#sub").click(function(){
-            $.post("${pageContext.request.contextPath}/findById",{userName:$("#userName").val(),password:$("#password").val()},function (result) {
+            $.post("${pageContext.request.contextPath}/findById",{"userName":$("#userName").val(),"password":$("#password").val()},function (result) {
                 if (result=="true"){
                     document.location="${pageContext.request.contextPath}/selectAll";
                 }else{
