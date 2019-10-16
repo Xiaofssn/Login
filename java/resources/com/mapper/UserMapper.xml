@@ -16,7 +16,5 @@
             AND password=#{user.password}
         </if>
     </select>
-    <delete id="deleteUser">
-        DELETE FROM user WHERE id=#{id}
-    </delete>
+
 </mapper>
