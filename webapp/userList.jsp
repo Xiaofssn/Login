@@ -11,7 +11,7 @@
                 <td id="userid${count.index}">${obj.id}</td>
                 <td>${obj.userName}</td>
                 <td>${obj.password}</td>
-                <td><button id="updateUser${count.index}" value="${obj.id}" onclick="">修改</button></td>
+                <td><a href="${pageContext.request.contextPath}/updateUser?uid=${obj.id}"><button id="updateUser${count.index}" value="${obj.id}" onclick="">修改</button></a></td>
                 <td><button id="deleteUser${count.index}" value="${obj.id}" onclick="del(this)">删除</button></td>
             </tr>
     </c:forEach>

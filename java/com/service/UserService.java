@@ -30,8 +30,24 @@ public class UserService {
         }
     }
 
+    public User findthisById(User user){
+        User user1=userInfo.findthisById(user);
+        if(user1!=null){
+            return user1;
+        }
+        return null;
+    }
+
     public boolean deleteUser(Integer id){
         if(userInfo.deleteUser(id)!=0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean updateUser(User user){
+        if(userInfo.updateUser(user)!=0){
             return true;
         }else{
             return false;

@@ -8,13 +8,21 @@
         SELECT id,userName,password  FROM user
     </select>
     <select id="findById" resultType="com.entity.User">
-        SELECT id,userName,password FROM user WHERE
-        <if test="#{user.userName!=null}">
-            userName=#{user.userName}
-        </if>
-        <if test="#{user.password!=null}">
-            AND password=#{user.password}
-        </if>
+    SELECT id,userName,password FROM user WHERE
+    <if test="#{user.userName!=null}">
+        userName=#{user.userName}
+    </if>
+    <if test="#{user.password!=null}">
+        AND password=#{user.password}
+    </if>
+</select>
+    <select id="findthisById" resultType="com.entity.User">
+        SELECT id,userName,password FROM user WHERE id=#{user.id}
     </select>
-
+    <delete id="deleteUser">
+        DELETE FROM uSer WHERE id=#{id}
+    </delete>
+    <update id="updateUser">
+        UPDATE `user` SET `password`=#{user.password} WHERE userName=#{user.userName}
+    </update>
 </mapper>

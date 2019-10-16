@@ -4,10 +4,7 @@ import com.entity.User;
 import com.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -28,9 +25,7 @@ public class UserController {
     //登录验证
     @ResponseBody
     @RequestMapping(value = "findById",method = RequestMethod.POST)
-    public String findById( User user, String userName, String password){
-        System.out.println("userName:"+userName+",password:"+password);
-        System.out.println(user.getUserName());
+    public String findById( User user){
         if(userService.findById(user)){
             return "true";
         }else{
@@ -41,8 +36,30 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "deleteUser")
     public String deleteUser(Integer id){
-        System.out.println("id:"+id);
         if(userService.deleteUser(id)){
+            return "true";
+        }else{
+            return "false";
+        }
+    }
+
+    @GetMapping(value = "updateUser")
+    public String updateUser(Integer uid,ModelMap map){
+        User user =new User();
+        user.setId(uid);
+        User user1=userService.findthisById(user);
+        if(user1!=null){
+            map.put("obj",user1);
+            return "update";
+        }else{
+            return selectAll(new ModelMap());
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "updateUser",method = RequestMethod.POST)
+    public String updateUser(User user){
+        if(userService.updateUser(user)){
             return "true";
         }else{
             return "false";

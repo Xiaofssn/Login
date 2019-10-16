@@ -13,13 +13,18 @@
 
         //登录验证
         $("#sub").click(function(){
-            $.post("${pageContext.request.contextPath}/findById",{"userName":$("#userName").val(),"password":$("#password").val()},function (result) {
+            $.ajax({
+                url:"${pageContext.request.contextPath}/findById",
+                type:"POST",
+            data:{"userName":$("#userName").val(),"password":$("#password").val()},
+                success:function (result) {
                 if (result=="true"){
                     document.location="${pageContext.request.contextPath}/selectAll";
                 }else{
                     alert("用户名或密码错误");
                     return false;
                 }
+            }
             })
         })
     })
